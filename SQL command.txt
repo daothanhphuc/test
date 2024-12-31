@@ -1,0 +1,11 @@
+--cho bang permissions
+INSERT INTO permissions (role_id, permission_name) VALUES (1, 'read');
+INSERT INTO permissions (role_id, permission_name) VALUES (1, 'write');
+INSERT INTO permissions (role_id, permission_name) VALUES (2, 'read');
+
+--cho bang roles
+INSERT INTO roles (name, description) VALUES ('Admin', 'You can modify');
+INSERT INTO roles (name, description) VALUES ('User', 'You can''t modify');
+
+--neu van loi thi vao bang users doi so ky tu cot password len 72
+ALTER TABLE users ALTER COLUMN password VARCHAR(72);
