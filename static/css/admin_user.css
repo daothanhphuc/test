@@ -182,7 +182,7 @@ th {
 }
 
 .modal {
-    display: flex;
+    /* display: flex; */
     display: none; 
     position: fixed; 
     z-index: 1; 
@@ -252,18 +252,20 @@ th {
     cursor: pointer;
 }
 .scrollable-content {
-    width: 100%;
+    width: 110%;
     height: 100vh; /* Full height of the viewport */
-    overflow-y: scroll; /* Add vertical scrollbar */
-    padding: 20px;
+   
+    max-height: 450px; /* Chiều cao tối đa của vùng cuộn */
+    overflow-y: auto; /* Thanh cuộn dọc */
     box-sizing: border-box;
-    background-color: #ffffff;
+   
     border: 1px solid #ccc;
 }
 
 /* Optional: Custom scrollbar styling */
 .scrollable-content::-webkit-scrollbar {
     width: 8px; /* Width of the scrollbar */
+    
 }
 
 .scrollable-content::-webkit-scrollbar-track {
