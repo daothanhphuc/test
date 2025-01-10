@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from db.schemas import constructionDisplay, LFDisplay, ConditionDisplay, processingDisplay, documentDisplay, statusDisplay, HanhChinhDisplay
 from sqlalchemy.orm import Session
 from db.database import get_db
-from db import construction, livestock, product, legal_docs,statisticals
+from db import construction, livestock, product, legal_docs,statisticals, huyen_xa_moi
 from typing import List
 
 router = APIRouter(
