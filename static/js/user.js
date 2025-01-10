@@ -64,8 +64,60 @@ function searchUsers() {
     renderTable(filteredData);
 }
 
-// Xử lý sự kiện nhấn nút "Tìm kiếm"
-document.getElementById("searchButton").addEventListener("click", searchUsers);
 
+// Mở modal thêm người dùng
+function openAddUserModal() {
+    document.getElementById("addUserModal").style.display = "block";
+}
+  
+// Đóng modal thêm người dùng
+function closeAddUserModal() {
+    document.getElementById("addUserModal").style.display = "none";
+}
 
+// Thêm người dùng mới vào database
+document.getElementById("addUserForm").addEventListener("submit", function (event) {
+    event.preventDefault(); // Ngăn không cho form gửi
+    console.log("Submit form"); // Để theo dõi xem có gọi đến không
 
+    // Lấy giá trị từ form
+    const fullname = document.getElementById("fullname").value;
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    const email = document.getElementById("email").value;
+    const role_id = document.getElementById("role").value;
+
+    // Cập nhật dữ liệu vào database 
+    const newUser = {
+        fullname: fullname,
+        username: username,
+        password: password,
+        email: email,
+        role_id: role_id,
+    };
+
+    // Gửi dữ liệu người dùng mới lên server
+    fetch("/register_user/new_user", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newUser),
+    })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then((data) => {
+            console.log("Thêm người dùng thành công:", data);
+        })
+        .catch((error) => {
+            console.error("Có lỗi xảy ra:", error);
+        });
+
+    searchUsers(); // Cập nhật lại danh sách người dùng
+
+    closeAddUserModal();
+});
