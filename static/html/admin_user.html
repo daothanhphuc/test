@@ -23,15 +23,15 @@
         </div> 
         <a class="button-manage" href="#" onclick="showSection('users')">Người dùng</a><br>
         <a class="button-manage" href="#" onclick="showSection('group')">Nhóm</a><br>
-        <!-- <a class="button-manage" href="#" onclick="showSection('district')">Huyện</a><br>
-        <a class="button-manage" href="#" onclick="showSection('commune')">Xã</a><br> -->
+        <a class="button-manage" href="#" onclick="showSection('district')">Huyện</a><br>
+        <a class="button-manage" href="#" onclick="showSection('commune')">Xã</a><br> 
         <a class="button-manage" href="#" onclick="showSection('small-projects')">Công trình nước nhỏ lẻ</a><br>
         <a class="button-manage" href="#" onclick="showSection('projects')">Công trình nước tập trung</a><br>
         <a class="button-manage" href="#" onclick="showSection('processing-facility')">Cơ sở chế biến</a><br>
         <a class="button-manage" href="#" onclick="showSection('livestock')">Chăn nuôi</a><br>
         <a class="button-manage" href="#" onclick="showSection('written-regulations')">Văn bản quy hoạch</a><br>
-        <a class="button-manage" href="#" onclick="showSection('history')">Lịch sử truy cập</a><br>
-        <a class="button-manage" href="#" onclick="showSection('status-manager')">Quản trị trạng thái hoạt động</a><br>
+        <!-- <a class="button-manage" href="#" onclick="showSection('history')">Lịch sử truy cập</a><br> -->
+        <!-- <a class="button-manage" href="#" onclick="showSection('status-manager')">Quản trị trạng thái hoạt động</a><br> -->
     </div>
     <main>
         <div class="information">
@@ -41,11 +41,6 @@
                     </div>
                     <section class="search-filter">
                         <input id="searchInput" type="text" placeholder="Tìm kiếm người dùng..." onkeyup="searchUsers()">
-                        <select>
-                            <option value="admin">Admin</option>
-                            <option value="user">Người dùng</option>
-                        </select>
-                        <button class="search-btn" id="searchButton" onclick="searchUsers()">Hiển thị</button>
                         <button class="add-user-btn" onclick="openAddUserModal()">Thêm người dùng mới</button>
                     </section>
                     <section class="user-list">
@@ -70,13 +65,29 @@
                                 <span class="close" onclick="closeAddUserModal()">&times;</span>
                                 <div class="title-project">Thêm người dùng mới</div>
                                 <form id="addUserForm">
-                                    <div class="more-info" for="user_name">
+                                    <div class="more-info" for="fullname">
                                         <label class="info-title"><span style="color: red;">*</span>
                                             Họ và Tên
                                         </label> 
                                         <div >
-                                            <input type="text" id="user_name" class="border-input" placeholder="Nhập thông tin" required>
+                                            <input type="text" id="fullname" class="border-input" placeholder="Nhập thông tin" required>
                                         </div>                                   
+                                    </div>
+                                    <div class="more-info" for="username">
+                                        <label class="info-title"><span style="color: red;">*</span>
+                                            Username
+                                        </label>
+                                        <div >
+                                            <input type="text" id="username" class="border-input" placeholder="Nhập thông tin" required>
+                                        </div>
+                                    </div>
+                                    <div class="more-info" for="password">
+                                        <label class="info-title"><span style="color: red;">*</span>
+                                            Password
+                                        </label>
+                                        <div >
+                                            <input type="password" id="password" class="border-input" placeholder="Nhập thông tin" required>
+                                        </div>
                                     </div>
                                     <div class="more-info" for="email">
                                         <label class="info-title"><span style="color: red;">*</span>
@@ -186,8 +197,7 @@
                     </div>
 
                     <div class="search-filter">
-                        <input type="text" id="search-input" placeholder="Tìm kiếm công trình...">
-                        <button class="search-btn" onclick="searchProjects()">Tìm kiếm</button>
+                        <input type="text" id="search-input" placeholder="Tìm kiếm công trình..." onkeyup="searchProjects()">
                     </div>
                     <section class = "project-list">
                         <table>                        
@@ -205,42 +215,49 @@
                                 <!-- Dữ liệu tự được generate  -->
                             </tbody>
                         </table>
+                        <div id="addProjectModal" class="modal">
+                            <div class="modal-content">
+                                <span class="close" onclick="closeAddProjectModal()">&times;</span>
+                                <div class="title-project">Thêm công trình nước mới</div>
+                                <form id="addProjectForm">
+                                    <div class="more-info" for="project_name">
+                                        Tên công trình   
+                                        <div >
+                                            <input type="text" id="project_name" class="border-input" placeholder="Nhập thông tin" required>
+                                        </div>                                   
+                                    </div>
+                                    <div class="more-info" for="location">
+                                        Địa điểm
+                                        <div >
+                                            <input type="text" id="location" class="border-input" placeholder="Nhập thông tin" required>
+                                        </div>
+                                    </div>
+                                    <div class="more-info" for="status">
+                                        Trạng thái
+                                        <div >
+                                            <input type="text" id="status" class="border-input" placeholder="Nhập thông tin" required>
+                                        </div>
+                                    </div>
+                                    <div class="more-info" for="construcion_year">
+                                        Năm xây dựng
+                                        <div >
+                                            <input type="text" id="construcion_year" class="border-input" placeholder="Nhập thông tin" required>
+                                        </div>
+                                    </div>
+                                    <div class="more-info" for="chi_so">
+                                        Chỉ số nước
+                                        <div >
+                                            <input type="text" id="chi_so" class="border-input" placeholder="Nhập thông tin" required>
+                                        </div>
+                                    </div>
+                                    <button type="submit">Thêm</button>
+                                </form>
+    
+                            </div>  
+                        </div> 
                     </section>
 
-                    <!-- <div id="addProjectModal" class="modal">
-                        <div class="modal-content">
-                            <span class="close" onclick="closeAddProjectModal()">&times;</span>
-                            <div class="title-project">Thêm công trình nước mới</div>
-                            <form id="addProjectForm">
-                                <div class="more-info" for="project_name">
-                                    Tên công trình   
-                                    <div >
-                                        <input type="text" id="project_name" class="border-input" placeholder="Nhập thông tin" required>
-                                    </div>                                   
-                                </div>
-                                <div class="more-info" for="location">
-                                    Địa điểm
-                                    <div >
-                                        <input type="text" id="location" class="border-input" placeholder="Nhập thông tin" required>
-                                    </div>
-                                </div>
-                                <div class="more-info" for="status">
-                                    Trạng thái
-                                    <div >
-                                        <input type="text" id="status" class="border-input" placeholder="Nhập thông tin" required>
-                                    </div>
-                                </div>
-                                <div class="more-info" for="capacity">
-                                    Chỉ số nước
-                                    <div >
-                                        <input type="text" id="capacity" class="border-input" placeholder="Nhập thông tin" required>
-                                    </div>
-                                </div>
-                                <button type="submit">Thêm</button>
-                            </form>
-
-                        </div>
-                    </div>    -->
+                      
                 </section>
         
                 <section id="projects" class="content-section">
