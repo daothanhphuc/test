@@ -14,7 +14,6 @@ def create_user(db: Session, request: UserBase, group_id: int = None, role_name:
         email=request.email,
         password=Hash.bcrypt(request.password),
         role_id=role.id,
-        status=True  # Mặc định người dùng hoạt động
     )
 
     db.add(new_user)
