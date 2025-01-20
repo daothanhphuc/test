@@ -8,10 +8,13 @@ function showSection(sectionId) {
     const selectedSection = document.getElementById(sectionId);
     selectedSection.classList.add('active');
 }
-
 window.onload = function() {
     showSection('users');
 };
+
+
+
+
 
 
 
