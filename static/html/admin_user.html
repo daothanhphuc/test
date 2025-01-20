@@ -8,10 +8,11 @@
 
     <script src="/static/js/admin_user.js"></script>
     <script src="/static/js/user.js"></script>
-    <script src="/static/js/list_retail_constructions.js"></script>
+    <!-- <script src="/static/js/list_retail_constructions.js"></script> -->
     <script src="/static/js/list_focus_constructions.js"></script>
     <script src="/static/js/list_huyen.js"></script>
     <script src="/static/js/list_xa.js"></script>
+    <script src="/static/js/list_groups.js"></script>
 </head>
 <body>
     <div class="columns">
@@ -102,7 +103,11 @@
                                             Vai trò
                                         </label>
                                         <div >
-                                            <input type="text" id="role" class="border-input" placeholder="Nhập thông tin" required>
+                                            <!-- <input type="text" id="role" class="border-input" placeholder="Nhập thông tin" required> -->
+                                            <select id="role" class="border-input" required>
+                                                <option value="1">User</option>
+                                                <option value="2">Admin</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-footer">
@@ -166,10 +171,14 @@
                     <div class="topic">
                         NHÓM
                     </div>
-                    <section class="search-filter">
+                    <!-- <section class="search-filter">
                         <input type="text" placeholder="Tìm kiếm nhóm...">
                         <button class="search-btn">Tìm kiếm</button>
                         <button class="add-user-btn">Thêm nhóm mới</button>
+                    </section> -->
+                    <section class="search-filter">
+                        <input id="searchInput" type="text" placeholder="Tìm kiếm nhom..." onkeyup="searchGroups()">
+                        <button class="add-user-btn" onclick="openAddGroupModal()">Thêm nhóm mới</button>
                     </section>
                     <section class="user-list">
                         <div class="scrollable-content">
@@ -181,12 +190,41 @@
                                         <th>Mô tả</th>
                                     </tr>
                                 </thead>  
-                                <tbody>
+                                <tbody id = "tableBodyGroup">
                                     <!-- dữ liệu sẽ được thêm vào nhờ file tương ứng -->
                                 </tbody>                          
                             </table>
                         </div>
-                        <script src ="/static/js/list_groups.js"></script>
+   
+                        <div id="addGroupModal" class="modal">
+                            <div class="modal-content">
+                                <span class="close" onclick="closeAddGroupModal()">&times;</span>
+                                <div class="title-project">Thêm người dùng mới</div>
+                                <form id="addGroupForm">
+                                    <div class="more-info" for="group_name">
+                                        <label class="info-title"><span style="color: red;">*</span>
+                                            Tên nhóm
+                                        </label> 
+                                        <div >
+                                            <input type="text" id="group_name" class="border-input" placeholder="Nhập thông tin" required>
+                                        </div>                                   
+                                    </div>
+                                    
+                                    <div class="more-info" for="description">
+                                        <label class="info-title"><span style="color: red;">*</span>
+                                            Mô tả
+                                        </label> 
+                                        <div >
+                                            <input type="text" id="description" class="border-input" placeholder="Nhập thông tin" required>
+                                        </div>                                   
+                                    </div>
+
+                                    <div class="form-footer">
+                                        <button type="submit" >Thêm</button>
+                                    </div>
+                                </form>                       
+                            </div>
+                        </div> 
                     </section>
                 </section>
 
