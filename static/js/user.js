@@ -78,7 +78,7 @@ function closeAddUserModal() {
 // Thêm người dùng mới vào database
 document.getElementById("addUserForm").addEventListener("submit", function (event) {
     event.preventDefault(); // Ngăn không cho form gửi
-    console.log("Submit form"); // Để theo dõi xem có gọi đến không
+    // console.log("Submit form"); // Để theo dõi xem có gọi đến không
 
     // Lấy giá trị từ form
     const fullname = document.getElementById("fullname").value;
@@ -117,7 +117,8 @@ document.getElementById("addUserForm").addEventListener("submit", function (even
             console.error("Có lỗi xảy ra:", error);
         });
 
-    searchUsers(); // Cập nhật lại danh sách người dùng
+    // searchUsers(); // Cập nhật lại danh sách người dùng
+    fetchUsers();
 
     closeAddUserModal();
 });
